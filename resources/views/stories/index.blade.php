@@ -7,6 +7,7 @@
             <div class="card">
                 <div class="card-header">Stories
                     <a href="{{ route('stories.create') }}" class="float-right">Add Story</a>
+                       
                 </div>
 
                 <div class="card-body">
