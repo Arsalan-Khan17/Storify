@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Story;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\StoryRequest;
 class StoriesController extends Controller
 {
     /**
@@ -38,20 +38,15 @@ class StoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoryRequest $request)
     {
 
-       $data =  $request->validate([
-            'title' => 'required',
-            'body' => 'required',
-            'type' => 'required',
-            'status' => 'required',
-        ]);
+    //    $data =  $request->validate();
         
 
       
 
-        auth()->user()->stories()->create($data);
+        auth()->user()->stories()->create($request->all());
 
         return redirect('/stories')->with('status','Story created successfully');
     }
@@ -89,21 +84,16 @@ class StoriesController extends Controller
      * @param  \App\Models\Story  $story
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Story $story)
+    public function update(StoryRequest $request, Story $story)
     {
 
         //dd($request->all());
-        $data =  $request->validate([
-            'title' => 'required',
-            'body' => 'required',
-            'type' => 'required',
-            'status' => 'required',
-        ]);
+       // $data =  $request->validate();
         
 
       
 
-        $story->update($data);
+        $story->update($request->all());
         return redirect('/stories')->with('status','Story Updated successfully');
     }
 
