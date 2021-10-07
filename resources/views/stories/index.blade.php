@@ -31,7 +31,9 @@
                                 <td>{{ $story->type }}</td>
                                 <td>{{ $story->status === 1 ? "Yes" : "No" }}</td>
                                 
-                                <td><a href="{{ route('stories.show',[$story->id]) }}" class="btn btn-secondary">View</a></td>
+                                <td><a href="{{ route('stories.show',[$story->id]) }}" class="btn   btn-secondary">View</a>
+                                    <a href="{{ route('stories.edit',[$story->id]) }}" class="btn btn-secondary">Edit</a>
+                                </td>
                             </tr>    
                             @endforeach
                         </tbody>
