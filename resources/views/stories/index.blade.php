@@ -34,6 +34,15 @@
                                 
                                 <td><a href="{{ route('stories.show',[$story->id]) }}" class="btn   btn-secondary">View</a>
                                     <a href="{{ route('stories.edit',[$story->id]) }}" class="btn btn-secondary">Edit</a>
+                                   
+                                    <form style="display: inline-block" action="{{ route('stories.destroy' , [$story->id]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button class="btn btn-danger">Delete</button>
+
+                                    
+                                    </form>
                                 </td>
                             </tr>    
                             @endforeach

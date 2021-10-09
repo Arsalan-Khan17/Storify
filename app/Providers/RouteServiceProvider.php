@@ -47,6 +47,12 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
         });
+
+        Route::bind('activeStory',function($id){
+
+            return \App\Models\Story::where('id',$id)->where('status',1)->firstOrFail();
+
+        });
     }
 
     /**

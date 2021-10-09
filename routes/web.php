@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\StoriesController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,3 +30,7 @@ Route::middleware(['auth'])->group(function(){
     // Route::get('/stories/{story}',[StoriesController::class,'show'])->name('stories.show');
     Route::resource('/stories',StoriesController::class);
 });
+
+
+Route::get('/' , [DashboardController::class,'index'])->name('dashboard.index');
+Route::get('/story/{activeStory}' , [DashboardController::class,'show'])->name('dashboard.show');
